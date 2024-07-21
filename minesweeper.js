@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(files => {
             files.forEach(file => {
-                availableImages.append(file.download_url);
+                availableImages.push(file.download_url);
             });
         })
         .catch(error => {

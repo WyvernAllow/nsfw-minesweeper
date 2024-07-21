@@ -60,17 +60,96 @@
             transform: scale(1.0);
             filter: none;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0px 0px 10px 0px black;
+            color: black;
+        }
+
+        .modal button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .modal button:hover {
+            background-color: #45a049;
+        }
+
+        .modal button:nth-child(2) {
+            background-color: #f44336;
+        }
+
+        .modal button:nth-child(2):hover {
+            background-color: #e53935;
+        }
+
+        .disabled {
+            pointer-events: none;
+            filter: blur(5px);
+        }
     </style>
 </head>
 
 <body>
-    <div>
+    <div class="content">
         <h2>Select a difficulty</h2>
         <button onclick="window.location.href='game.html?difficulty=easy'">Please be gentle</button>
         <button onclick="window.location.href='game.html?difficulty=medium'">Mine me harder</button>
         <button onclick="window.location.href='game.html?difficulty=hard'">Oppenminer</button>
         <button onclick="window.location.href='game.html?difficulty=very-hard'">Mineweeper</button>
     </div>
+
+    <div id="ageModal" class="modal">
+        <div class="modal-content">
+            <p>You must be 18 or older to play this game.</p>
+            <button id="continue">I am 18 or older</button>
+            <button id="leave">Leave</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modal = document.getElementById("ageModal");
+            var content = document.querySelector(".content");
+            modal.style.display = "flex";
+            content.classList.add("disabled");
+
+            document.getElementById("continue").onclick = function () {
+                modal.style.display = "none";
+                content.classList.remove("disabled");
+            };
+
+            document.getElementById("leave").onclick = function () {
+                window.location.href = "https://www.google.com";
+            };
+        });
+    </script>
+
 </body>
 
 </html>

@@ -1,2 +1,2 @@
 # nsfw minesweeper
-Minesweeper but I added Hentai.
+Minesweeper but we added Hentai.

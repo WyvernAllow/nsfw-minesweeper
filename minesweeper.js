@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const difficulty = params.get('difficulty');
 
@@ -43,20 +43,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const owner = 'WyvernAllow';
     const repo = 'nsfw-minesweeper';
     const path = 'images';
+    
+    let availableImages = [];
 
-    let availableImages = []
-
-    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
-        .then(response => response.json())
-        .then(files => {
+    async function fetchImages() {
+        try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`);
+            const files = await response.json();
             files.forEach(file => {
+                console.log(file.download_url);
                 availableImages.push(file.download_url);
             });
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error:', error);
-        });
+        }
+    }
 
+    await fetchImages();
     initMinefield();
 
     function initMinefield() {
@@ -84,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
         minefield.classList.remove("won");
 
         let imageUrl = availableImages[Math.floor(Math.random() * availableImages.length)];
+
+        console.log(`Selected image: ${imageUrl}`);
 
         minefieldContainer.style.backgroundImage = `url(${imageUrl})`;
 
@@ -174,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setTimeout(() => {
                     initMinefield();
-                    renderBoard();
+                    renderMinefield();
                 }, 2000);
 
                 return;
@@ -207,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 alert(`You finished in ${elapsedTime} seconds`);
                 initMinefield();
-                renderBoard();
+                renderMinefield();
             }, 4000);
         }
     }

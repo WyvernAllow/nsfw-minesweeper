@@ -20,6 +20,7 @@ body, html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    filter: drop-shadow(rgba(0, 0, 0, 0.781) 0rem 0rem 10px);
 }
 
 #minefield {
@@ -52,11 +53,16 @@ body, html {
 .cell:hover {
     background-color: rgb(26, 143, 56);
     border: 2px outset rgb(77, 161, 52);
+    filter: drop-shadow(rgb(68, 67, 67) 0rem 0rem 8px);
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
 }
 
 .cell:active {
     background-color: rgb(85, 85, 85);
     border: 2px inset rgb(173, 167, 160);
+    transform: scale(1.0);
+    filter: none
 }
 
 .cell.revealed {

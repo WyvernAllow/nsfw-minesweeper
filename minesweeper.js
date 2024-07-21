@@ -40,6 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let cells = [];
     let startTime;
 
+    const owner = 'WyvernAllow';
+    const repo = 'nsfw-minesweeper';
+    const path = 'images';
+
+    let availableImages = []
+
+    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
+        .then(response => response.json())
+        .then(files => {
+            files.forEach(file => {
+                availableImages.append(file.download_url);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
     initMinefield();
 
     function initMinefield() {
@@ -66,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
         minefield.classList.remove("disabled");
         minefield.classList.remove("won");
 
-        // minefieldContainer.style.backgroundImage = `url(${url})`;
+        let imageUrl = availableImages[Math.floor(Math.random() * availableImages.length)];
+
+        minefieldContainer.style.backgroundImage = `url(${imageUrl})`;
 
         renderMinefield();
     }

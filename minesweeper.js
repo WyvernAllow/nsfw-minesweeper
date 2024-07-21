@@ -231,12 +231,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let y = 0; y < height; y++) {
                 const cell = document.createElement("div");
                 cell.classList.add('cell');
-
-                if (cells[x][y].isMine) {
-                    cell.classList.add('mine');
-                    cell.textContent = '💣';
-                }
-
+                
                 if (cells[x][y].revealed) {
                     cell.classList.add('revealed');
 

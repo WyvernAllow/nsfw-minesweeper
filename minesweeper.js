@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const owner = 'WyvernAllow';
     const repo = 'nsfw-minesweeper';
     const path = 'images';
-    
+
     let availableImages = [];
 
     async function fetchImages() {

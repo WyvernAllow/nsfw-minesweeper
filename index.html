@@ -3,14 +3,74 @@
 
 <head>
     <title>NSFW Minesweeper</title>
-    <link rel="stylesheet" href="./style.css">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💣</text></svg>" />
-    <script src="./minesweeper.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            background-color: rgb(171, 230, 116);
+            color: white;
+            text-shadow: black 0px 0px 10px;
+            font-size: 2vw;
+        }
+
+        h2 {
+            font-size: 3em;
+            margin-bottom: 2vh;
+        }
+
+        button {
+            display: block;
+            margin: 1vh auto;
+            padding: 1vh 2vw;
+            font-size: 1em;
+            background-color: rgb(137, 144, 148);
+            border: 3px outset rgb(108, 128, 128);
+            color: white;
+            cursor: pointer;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            bottom: -10px;
+            left: -10px;
+            background: transparent;
+            z-index: -1;
+        }
+
+        button:hover {
+            background-color: rgb(26, 143, 56);
+            border: 2px outset rgb(77, 161, 52);
+            filter: drop-shadow(rgb(68, 67, 67) 0rem 0rem 8px);
+            transform: scale(1.1);
+            transition: transform 0.1s ease;
+            z-index: 1;
+        }
+
+        button:active {
+            transform: scale(1.0);
+            filter: none;
+        }
+    </style>
 </head>
 
-<div id="minefieldContainer">
-    <div id="minefield"></div>
-</div>
+<body>
+    <div>
+        <h2>Select a difficulty</h2>
+        <button onclick="window.location.href='game.html?difficulty=easy'">Please be gentle</button>
+        <button onclick="window.location.href='game.html?difficulty=medium'">Mine me harder</button>
+        <button onclick="window.location.href='game.html?difficulty=hard'">Oppenminer</button>
+        <button onclick="window.location.href='game.html?difficulty=very-hard'">Mineweeper</button>
+    </div>
+</body>
 
 </html>

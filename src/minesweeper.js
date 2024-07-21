@@ -135,9 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderMinefield();
 
         minefield.classList.add("disabled");
-
-        container = document.getElementById("minefieldContainer");
-        container.style.backgroundImage = "none";
+        minefieldContainer.style.backgroundImage = "none";
     }
 
     function revealCell(x, y) {

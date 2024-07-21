@@ -1,0 +1,77 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(171, 230, 116);
+}
+
+#minefieldContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    width: 100vmin;
+    height: 100vmin;
+    max-width: 100%;
+    max-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#minefield {
+    display: grid;
+    gap: 0px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    width: 100%;
+    height: 100%;
+}
+
+.cell {
+    user-select: none;
+    font-size: 1.6em;
+    color: white;
+    background-color: rgb(137, 144, 148);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-shadow: black 0px 0px 10px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    display: flex;
+    border: 3px outset rgb(108, 128, 128);
+    box-sizing: border-box;
+    line-height: 1;
+    overflow: hidden;
+}
+
+.cell:hover {
+    background-color: rgb(26, 143, 56);
+    border: 2px outset rgb(77, 161, 52);
+}
+
+.cell:active {
+    background-color: rgb(85, 85, 85);
+    border: 2px inset rgb(173, 167, 160);
+}
+
+.cell.revealed {
+    background-color: transparent;
+    border: none;
+    transition: 0.2s ease;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.won {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 3.0s ease;
+}

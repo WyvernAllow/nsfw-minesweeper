@@ -9,27 +9,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     switch (difficulty) {
         case 'easy':
             width = 10;
-            height = 8;
+            height = 10;
             mineCount = 10;
             break;
         case 'medium':
-            width = 18;
-            height = 14;
+            width = 15;
+            height = 15;
             mineCount = 40;
             break;
         case 'hard':
-            width = 24;
-            height = 20;
+            width = 22;
+            height = 22;
             mineCount = 99;
             break;
         case 'very-hard':
-            width = 26;
+            width = 25;
             height = 25;
             mineCount = 150;
             break;
         default:
             width = 10;
-            height = 8;
+            height = 10;
             mineCount = 10;
             break;
     }
